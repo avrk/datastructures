@@ -1,8 +1,4 @@
 package com.ds;
-
-/**
- * Created by Ravi on 4/12/16.
- */
 public class LinkedList{
     private Node head;
 

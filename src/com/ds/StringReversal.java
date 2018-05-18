@@ -29,10 +29,26 @@ public class StringReversal {
         return new String(charArray);
     }
 
+    private static void reverseCharacters(char[] charArray, int start, int end){
+        for(int i = start, j=end; i <= j; i++ , j--){
+            char tmp = charArray[i];
+            charArray[i] = charArray[j];
+            charArray[j] = tmp;
+        }
+    }
+
     public static void main(String args[]){
         StringReversal tst = new StringReversal();
         String input = "Abc Htr lju ytu rtm";
-        System.out.println(tst.reverseit(input));
+        char[] charArray = input.toCharArray();
+        tst.reverseCharacters(charArray, 0, charArray.length-1);
+        int currentWordStartingIndex = 0;
+        for(int i=0; i <= charArray.length; i++){
+            if(i == charArray.length || charArray[i] == ' '){
+                tst.reverseCharacters(charArray, currentWordStartingIndex, i-1);
+                currentWordStartingIndex = i+1;
+            }
+        }
+        System.out.println(charArray);
     }
-
 }
